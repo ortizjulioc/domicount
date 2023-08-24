@@ -1,0 +1,43 @@
+.domino {
+    text-shadow: 3px 4px 4px rgb(36, 61, 113) ;
+    color: rgb(11, 5, 27);
+    margin: 0px 0px 0px 0px;
+}
+
+.imagenlogo {
+height: 150px;
+padding: 0px;
+
+}
+
+.anotar {
+    min-height: 900px;
+
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    
+    bottom: 0;
+    width: 100%;
+    height: auto;            /* Footer height */
+  }
+  .anotar {
+    min-width: 100vh;
+  }
+  body {
+    background-color: rgba(255, 255, 255, 0.838) !important;
+  }
+
+  .ipequipo1 {
+    width: 100%;
+  }
+
+  .ipequipo2 {
+    width: 100%;
+  }
+

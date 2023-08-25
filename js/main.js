@@ -1,5 +1,5 @@
 const input = document.querySelector('.ipequipo1');
-const addbtn1 = document.querySelector('.voton1');
+const addbtn1 = document.querySelector('#btn1');
 const ulequipo1 = document.querySelector('.ulequipo1');
 
 const input2 = document.querySelector('.ipequipo2');

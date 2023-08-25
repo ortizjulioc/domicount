@@ -8,12 +8,52 @@ const ulequipo2 = document.querySelector('.ulequipo2');
 const spanTotalEquipo1 = document.querySelector("#totalEquipo1")
 const spanTotalEquipo2 = document.querySelector("#totalEquipo2")
 
+const settingsMenu = document.querySelector("#settings");
+const txtBono = document.querySelector("#txtBono");
+const txtNombreEquipo1 = document.querySelector("#txtNombreEquipo1");
+const txtNombreEquipo2 = document.querySelector("#txtNombreEquipo2");
+const btnGuardar = document.querySelector("#btnGuardar");
+const btnCancelar = document.querySelector("#btnCancelar");
+const btnSetting = document.querySelector("#btnSetting");
+
 var puntajeEquipo1 = []
 var puntajeEquipo2 = []
 var totalEquipo1 = 0;
 var totalEquipo2 = 0;
-
+var menuAbierto = false;
 const miStorage = window.localStorage;
+
+btnSetting.addEventListener("click",() => {
+  if (menuAbierto == false) {
+    settingsMenu.classList.remove("settings-menu-hide")
+    menuAbierto = true
+  } else {
+    settingsMenu.classList.add("settings-menu-hide")
+    menuAbierto = false
+  }
+}
+)
+
+btnGuardar.addEventListener("click" ,() => {
+  let datosUsuario = {
+    "equipo1":txtNombreEquipo1.value,
+    "equipo2":txtNombreEquipo2.value,
+    "bono":txtBono.value
+  }
+  miStorage.setItem("datosUsuario",JSON.stringify(datosUsuario)) //json a texto para guardar en el local storage//
+  console.log (JSON.parse(miStorage.getItem("datosUsuario")))
+  let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
+  console.log(datosUsuariodelLocalStorage.equipo1)
+  console.log(datosUsuariodelLocalStorage.equipo2)
+  console.log(datosUsuariodelLocalStorage.bono)
+  cargarDatosUsuario();
+}) 
+
+function cargarDatosUsuario () {
+  let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
+  input.placeholder = datosUsuariodelLocalStorage.equipo1;
+  input2.placeholder = datosUsuariodelLocalStorage.equipo2;
+}
 function getPuntos() {
   
   let puntosEquipo1 = miStorage.getItem("equipo1")

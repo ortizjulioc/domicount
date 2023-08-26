@@ -15,6 +15,9 @@ const txtNombreEquipo2 = document.querySelector("#txtNombreEquipo2");
 const btnGuardar = document.querySelector("#btnGuardar");
 const btnCancelar = document.querySelector("#btnCancelar");
 const btnSetting = document.querySelector("#btnSetting");
+const btnReset = document.querySelector("#btnReset");
+const btnAgregarBono1 = document.querySelector("#agregarBono1")
+const btnAgregarBono2 = document.querySelector("#agregarBono2")
 
 var puntajeEquipo1 = []
 var puntajeEquipo2 = []
@@ -22,6 +25,28 @@ var totalEquipo1 = 0;
 var totalEquipo2 = 0;
 var menuAbierto = false;
 const miStorage = window.localStorage;
+
+btnAgregarBono1.addEventListener("click",(e) => {
+  e.preventDefault();
+  let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
+  if (input.value == ""){
+    input.value = parseInt(obtenerBono1LocalStorage.bono); 
+  }else if (input.value != ""){
+    input.value = parseInt(input.value) + parseInt(obtenerBono1LocalStorage.bono); 
+  }
+  
+})
+
+btnAgregarBono2.addEventListener("click",(e) => {
+  e.preventDefault();
+  let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
+  if (input2.value == ""){
+    input2.value = parseInt(obtenerBono1LocalStorage.bono); 
+  }else if (input2.value != ""){
+    input2.value = parseInt(input2.value) + parseInt(obtenerBono1LocalStorage.bono); 
+  }
+  
+})
 
 btnSetting.addEventListener("click",() => {
   if (menuAbierto == false) {
@@ -33,12 +58,20 @@ btnSetting.addEventListener("click",() => {
   }
 }
 )
+btnCancelar.addEventListener("click", () => {
+  menuAbierto = false
+  settingsMenu.classList.add("settings-menu-hide")
+  txtNombreEquipo1.value = ""
+  txtNombreEquipo2.value = ""
+  txtBono.value = ""
+}) 
 
 btnGuardar.addEventListener("click" ,() => {
   let datosUsuario = {
     "equipo1":txtNombreEquipo1.value,
     "equipo2":txtNombreEquipo2.value,
     "bono":txtBono.value
+    
   }
   miStorage.setItem("datosUsuario",JSON.stringify(datosUsuario)) //json a texto para guardar en el local storage//
   console.log (JSON.parse(miStorage.getItem("datosUsuario")))
@@ -47,6 +80,8 @@ btnGuardar.addEventListener("click" ,() => {
   console.log(datosUsuariodelLocalStorage.equipo2)
   console.log(datosUsuariodelLocalStorage.bono)
   cargarDatosUsuario();
+  menuAbierto = false
+  settingsMenu.classList.add("settings-menu-hide")
 }) 
 
 function cargarDatosUsuario () {
@@ -115,11 +150,12 @@ addbtn1.addEventListener("click", (e) => {
   e.preventDefault();
 
   const text = input.value;
+  if (input.value !== "") {
   puntajeEquipo1.push(text);
   miStorage.setItem("equipo1", puntajeEquipo1)
   getPuntos();
   mostrarPuntos();
-
+  }
   input.value = "";
 });
 
@@ -127,14 +163,24 @@ addbtn2.addEventListener("click", (e) => {
   e.preventDefault();
 
   const text = input2.value;
+  if (input2.value !== "") {
   puntajeEquipo2.push(text);
   miStorage.setItem("equipo2",puntajeEquipo2)
   getPuntos();
   mostrarPuntos();
-
+  }
   input2.value = "";
 
 });
+
+btnReset.addEventListener("click",() => {
+ localStorage.removeItem("equipo1");
+ localStorage.removeItem("equipo2");
+ location.reload()
+}
+)
+cargarDatosUsuario ()
 getPuntos();
 mostrarPuntos();
+
 

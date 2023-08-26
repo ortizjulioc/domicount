@@ -28,27 +28,28 @@
        <!--==============================================================================================================================
   ===================================Menu==============================================================================
   =================================================================================================================================-->
-       <div id="settings" class="settings-menu settings-menu-hide">
-        <div class="row p-3">
-          <div class="col-12 text-start"><label for="">Bono</label> </div>
-          <div class="col-12">
+  <div id="settings" class="settings-menu settings-menu-hide">
+    <div class="row p-3">
+        <div class="col-12 text-start"><label for="">Bono</label></div>
+        <div class="col-12">
             <input type="number" class="form-control" id="txtBono">
-          </div>
-          <div class="col-12 text-start"><label for="">Nombre equipo 1</label> </div>
-          <div class="col-12">
-            <input type="text" class="form-control" id="txtNombreEquipo1">
-          </div>
-          <div class="col-12 text-start"> <label for="">Nombre equipo 2</label> </div>
-          <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
-          <div class="col-6 mt-3 justify-content-center">
-            <button id="btnGuardar" class="btn btn-info text-white btn-block"> Guardar</button>
-          </div>
-          <div class="col-4 mt-3 justify-content-center"><button id="btnCancelar" class="btn btn-outline-danger">Cancelar</button></div>
         </div>
-       </div>
-      </div>
+        <div class="col-12 text-start"><label for="">Nombre equipo 1</label></div>
+        <div class="col-12">
+            <input type="text" class="form-control" id="txtNombreEquipo1">
+        </div>
+        <div class="col-12 text-start"> <label for="">Nombre equipo 2</label></div>
+        <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
+        
+        <div class="col-6 mt-3 justify-content-center mt-3">
+            <button id="btnGuardar" class="btn btn-info text-white btn-block">Guardar</button>
+        </div>
+        <div class="col-4 mt-3 justify-content-center"><button id="btnCancelar" class="btn btn-outline-danger">Cancelar</button></div>
     </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
 
 </header>
 
@@ -64,9 +65,10 @@
           <form class="row align-items-center justify-content-center d-flex">
             
               <div class="col-8 col-xs-2">
-                <input id="eq1" type="text" class="form-control ipequipo1 " placeholder="Equipo 1">
+                <input id="eq1" type="number" class="form-control ipequipo1 "placeholder="Equipo 1">
               </div>
               <div class="col-4 col-xs-2">
+                <button id="agregarBono1" class="btn btn-warning text-white btn-block voton1">+Bono</button>
                 <button id="btn1" class="btn btn-info text-white btn-block voton1"> +</button>
               </div>
             
@@ -84,9 +86,10 @@
           <form class="row align-items-center justify-content-center d-flex ">
             
               <div class="col-8 col-xs-2">
-                <input id="eq2" type="text" class="form-control ipequipo2" placeholder="Equipo 2">
+                <input id="eq2" type="number" class="form-control ipequipo2" placeholder="Equipo 2">
               </div>
               <div class="col-4 col-xs-2">
+                <button id="agregarBono2" class="btn btn-warning text-white btn-block voton1">+Bono</button>
                 <button id="btn2" class="btn btn-info text-white btn-block voton2">+</button>
               </div>
            
@@ -104,6 +107,8 @@
 <!--==============================================================================================================================
   ===================================footer==============================================================================
   =================================================================================================================================-->
+  <div class="col-12 text-center"><button class="btn btn-danger text-white btn-block pt-2 form-control" id="btnReset">Reset</button></div>
+
 <footer class="shadow-sm p-3 bg-body-tertiary rounded">
   <div class="container text-center">
     <div class="row align-items-start">

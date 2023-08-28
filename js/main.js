@@ -18,6 +18,8 @@ const btnSetting = document.querySelector("#btnSetting");
 const btnReset = document.querySelector("#btnReset");
 const btnAgregarBono1 = document.querySelector("#agregarBono1")
 const btnAgregarBono2 = document.querySelector("#agregarBono2")
+const lblNombreEquipo1 = document.querySelector("#lblNombreEquipo1");
+const lblNombreEquipo2 = document.querySelector('#lblNombreEquipo2');
 
 var puntajeEquipo1 = []
 var puntajeEquipo2 = []
@@ -86,8 +88,8 @@ btnGuardar.addEventListener("click" ,() => {
 
 function cargarDatosUsuario () {
   let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
-  input.placeholder = datosUsuariodelLocalStorage.equipo1;
-  input2.placeholder = datosUsuariodelLocalStorage.equipo2;
+  lblNombreEquipo1.innerHTML = datosUsuariodelLocalStorage.equipo1;
+  lblNombreEquipo2.innerHTML = datosUsuariodelLocalStorage.equipo2;
 }
 function getPuntos() {
   

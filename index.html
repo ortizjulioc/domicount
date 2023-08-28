@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head class="d-flex">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
@@ -11,124 +11,110 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-  <!--==============================================================================================================================
-  ===================================Header==============================================================================
-  =================================================================================================================================-->
 <header class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-  <div class="container text-center ">
+  <div class="text-center ">
     <div class="row align-items-start">
-      <div class="col text fs-2 fw-bold d-flex justify-content-start">
-        <p class="domino">Domicount</p>
+      <div class="col-3 img text-center">
+        <img class="imagenlogo" src="imagenes/domicount.png" alt="">
+        <div class="col-3 text-center fs-2 fw-bold d-flex justify-content-start">
+          <p class="domino">Domicount</p>
+        </div>
       </div>
-      <div class="col img">
-        <img class="imagenlogo" src="imagenes/ppp.jpg" alt="">
-      </div>
-      <div class="col text-end">
+      <div class="col-6 text-end">
        <button id="btnSetting" class="btn bi bi-gear fs-3 text-secondary"></button>
-       <!--==============================================================================================================================
-  ===================================Menu==============================================================================
-  =================================================================================================================================-->
-  <div id="settings" class="settings-menu settings-menu-hide">
-    <div class="row p-3">
-        <div class="col-12 text-start"><label for="">Bono</label></div>
-        <div class="col-12">
-            <input type="number" class="form-control" id="txtBono">
+      <div id="settings" class="settings-menu settings-menu-hide">
+        <div class="row p-3">
+            <div class="col-12 text-start"><label for="">Bono</label></div>
+            <div class="col-12">
+                <input type="number" class="form-control" id="txtBono">
+            </div>
+            <div class="col-12 text-start"><label for="">Nombre equipo 1</label></div>
+            <div class="col-12">
+                <input type="text" class="form-control" id="txtNombreEquipo1">
+            </div>
+            <div class="col-12 text-start"> <label for="">Nombre equipo 2</label></div>
+            <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
+            
+            <div class="col-6 mt-3 justify-content-center mt-3">
+                <button id="btnGuardar" class="btn btn-info text-white btn-block">Guardar</button>
+            </div>
+            <div class="col-6 mt-3 justify-content-center"><button id="btnCancelar" class="btn btn-outline-danger">Cancelar</button></div>
+            <div class="col-12 mt-3"><button class="btn btn-outline-danger form-control" id="btnReset">Reiniciar</button></div>
         </div>
-        <div class="col-12 text-start"><label for="">Nombre equipo 1</label></div>
-        <div class="col-12">
-            <input type="text" class="form-control" id="txtNombreEquipo1">
-        </div>
-        <div class="col-12 text-start"> <label for="">Nombre equipo 2</label></div>
-        <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
-        
-        <div class="col-6 mt-3 justify-content-center mt-3">
-            <button id="btnGuardar" class="btn btn-info text-white btn-block">Guardar</button>
-        </div>
-        <div class="col-4 mt-3 justify-content-center"><button id="btnCancelar" class="btn btn-outline-danger">Cancelar</button></div>
-    </div>
 </div>
 </div>
 </div>
 </div>
-
 </header>
-
-<!--==============================================================================================================================
-  ===================================anotar==============================================================================
-  =================================================================================================================================-->
   
   <section class="anotar">
-    <div class="container text-center p-5">
-      <div class="row justify-content-center align-items-start">
+    <div class="text-center p-5">
+      <div class="row">
   
-        <div class="col ">
-          <form class="row align-items-center justify-content-center d-flex">
-            
-              <div class="col-8 col-xs-2">
-                <input id="eq1" type="number" class="form-control ipequipo1 "placeholder="Equipo 1">
+        <div class="col-6 border-end border-2 border-black">
+          <div class="row">
+            <span id="lblNombreEquipo1">Equipo 1</span>
+            <form class="d-flex">
+              <div class="col-6">
+                <input id="eq1" type="number" class="form-control ipequipo1 "placeholder="0">
               </div>
-              <div class="col-4 col-xs-2">
-                <button id="agregarBono1" class="btn btn-warning text-white btn-block voton1">+Bono</button>
+              <div class="col-3">
+                <button id="agregarBono1" class="btn btn-outline-warning btn-block voton1">30</button>
+              </div>
+              <div class="col-3">
                 <button id="btn1" class="btn btn-info text-white btn-block voton1"> +</button>
               </div>
-            
-          </form>
-  
-          <ol class="ulequipo1 ">
-          </ol>
-          <div class="row justify-content-start pl-5 border-bottom border-top border-2 border-black">
-          <div class="col-3 text-info fs-5"><span id="totalEquipo1"></span></div>
+            </form>
           </div>
 
+          <div class="row">
+            <ol class="ulequipo1 col-6">
+            </ol>
+            <div class="row">
+              <div class="col-3 text-info fs-5 text-center"><span id="totalEquipo1"></span></div>
+            </div>
+          </div>
         </div>
-   <!--------------------------------------------------------------------------------------------------------------------->
-        <div class="col">
-          <form class="row align-items-center justify-content-center d-flex ">
-            
-              <div class="col-8 col-xs-2">
-                <input id="eq2" type="number" class="form-control ipequipo2" placeholder="Equipo 2">
+
+        <div class="col-6">
+          <div class="row">
+            <span id="lblNombreEquipo2">Equipo 2</span>
+            <form class="d-flex">
+              <div class="col-6">
+                <input id="eq2" type="number" class="form-control ipequipo2" placeholder="0">
               </div>
-              <div class="col-4 col-xs-2">
-                <button id="agregarBono2" class="btn btn-warning text-white btn-block voton1">+Bono</button>
-                <button id="btn2" class="btn btn-info text-white btn-block voton2">+</button>
+              <div class="col-3">
+                <button id="agregarBono2" class="btn btn-outline-warning voton1">30</button>
               </div>
-           
+              <div class="col-3">
+                <button id="btn2" class="btn btn-info text-white voton2">+</button>
+              </div>
           </form>
- 
-          <ol class="ulequipo2">
-          </ol>
-          <div class="row justify-content-start pl-5 border-bottom border-top border-2 border-black">
-          <div class="col-3  text-info fs-5"><span  id="totalEquipo2"></span></div>
-        </div>
+          </div>
+          <div class="row">
+            <ol class="ulequipo2 col-6">
+            </ol>
+          </div>
+          <div class="row">
+            <div class="col-3  text-info fs-5 justify-content-center"><span id="totalEquipo2"></span></div>
+          </div>
       </div>
     </div>
   </section>
 
-<!--==============================================================================================================================
-  ===================================footer==============================================================================
-  =================================================================================================================================-->
-  <div class="col-12 text-center"><button class="btn btn-danger text-white btn-block pt-2 form-control" id="btnReset">Reset</button></div>
-
-<footer class="shadow-sm p-3 bg-body-tertiary rounded">
-  <div class="container text-center">
-    <div class="row align-items-start">
-      <div class="col text fs-2 fw-bold d-flex justify-content-start">
-        
-      </div>
-      <div class="col img">
-        <i class="bi bi-github fs-1"></i>
-      </div>
-      <div class="col text-end">
-     
+  <footer class="shadow-sm p-3 bg-body-tertiary rounded">
+    <div class="text-center">
+      <div class="row align-items-start">
+        <div class="col text fs-2 fw-bold d-flex justify-content-start">
+        </div>
+        <div class="img">
+          <i class="bi bi-github fs-1"></i>
+        </div>
+        <div class="col text-end">
+        </div>
       </div>
     </div>
-  </div>
-  
-  
-
-</footer>
-
-
+  </footer>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
    <script src="js/main.js"></script>
 </body>

@@ -59,3 +59,17 @@ footer {
 .settings-menu-hide {
   display: none !important;
 }
+
+.github-logo {
+  color:black;
+  transition: ease 0.5s;
+}
+
+.github-logo:visited {
+  color:black;
+}
+
+.github-logo:hover {
+  color:#1fa2d6;
+  transition: ease 0.5s;
+}

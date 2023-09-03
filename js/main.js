@@ -268,7 +268,6 @@ function loadingState () {
 cargarDatosUsuario ()
 getPuntos();
 mostrarPuntos();
-if (userAgent.includes("Android") || userAgent.includes("iPhone")) {
-  loadingState();
-}
-showCVfeature();
+loadingState();
+// showCVfeature();
+

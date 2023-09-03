@@ -21,6 +21,14 @@ const btnAgregarBono2 = document.querySelector("#agregarBono2")
 const lblNombreEquipo1 = document.querySelector("#lblNombreEquipo1");
 const lblNombreEquipo2 = document.querySelector('#lblNombreEquipo2');
 
+// boton para llamar al procesamiento de imagenes CV significa 'computer vision'
+const countCV1 = document.querySelector("#countCV1");
+const countCV2 = document.querySelector("#countCV2");
+const imageFile1 = document.querySelector("#imageFile1");
+const imageFile2 = document.querySelector("#imageFile2");
+const featureContainer = document.querySelector(".feature-container");
+var loading = false;
+
 var puntajeEquipo1 = []
 var puntajeEquipo2 = []
 var totalEquipo1 = 0;
@@ -92,6 +100,7 @@ function cargarDatosUsuario () {
   btnAgregarBono1.innerHTML = datosUsuariodelLocalStorage.bono
   btnAgregarBono2.innerHTML = datosUsuariodelLocalStorage.bono
   lblNombreEquipo2.innerHTML = datosUsuariodelLocalStorage.equipo2;
+
 }
 function getPuntos() {
   
@@ -183,8 +192,79 @@ btnReset.addEventListener("click",() => {
  location.reload()
 }
 )
+
+countCV1.addEventListener("click",(e) => {
+  e.preventDefault();
+  imageFile1.click();
+})
+
+imageFile1.addEventListener("change", async (e) => {
+  e.preventDefault();
+  countCV(imageFile1).then((result) => {
+    input.value = result.points;
+  });
+})
+
+countCV2.addEventListener("click",(e) => {
+  e.preventDefault();
+  imageFile2.click();
+})
+
+imageFile2.addEventListener("change", async (e) => {
+  e.preventDefault();
+  countCV(imageFile2).then((result) => {
+    input2.value = result.points;
+  });
+})
+
+async function countCV(imageFile) {
+  loading = true;
+  loadingState();
+  try {
+  const formData = new FormData();
+  formData.append("image", imageFile.files[0]);
+  const response = await fetch("http://143.198.62.203:5000/countPoints", {
+    method: "POST",
+    body: formData,
+  }).finally(() => {
+    loading = false;
+    loadingState();
+  });
+  const result = await response.json();
+  return result;
+  } catch (error) {
+    alert(error);
+  }
+}
+
+
+function showCVfeature() {
+  user_platform = window.navigator.userAgent;
+  if (user_platform.includes("Android") || user_platform.includes("iPhone")) {
+    countCV1.classList.remove("hide-feature");
+    countCV2.classList.remove("hide-feature");
+    featureContainer.classList.remove("hide-feature");
+  } else {
+    countCV1.classList.add("hide-feature");
+    countCV2.classList.add("hide-feature");
+    featureContainer.classList.add("hide-feature");
+  }
+}
+
+function loadingState () {
+  const loaderContainer = document.querySelector(".loader-container");
+  const loader = document.querySelector(".lds-spinner");
+  if (loading == false) {
+    loaderContainer.classList.add("hide-feature");
+    loader.classList.add("hide-feature");
+  } else {
+    loaderContainer.classList.remove("hide-feature");
+    loader.classList.remove("hide-feature");
+  }
+}
+
 cargarDatosUsuario ()
 getPuntos();
 mostrarPuntos();
-
-
+loadingState();
+showCVfeature();

@@ -21,6 +21,8 @@ const btnAgregarBono2 = document.querySelector("#agregarBono2")
 const lblNombreEquipo1 = document.querySelector("#lblNombreEquipo1");
 const lblNombreEquipo2 = document.querySelector('#lblNombreEquipo2');
 
+const userAgent = window.navigator.userAgent;
+
 // boton para llamar al procesamiento de imagenes CV significa 'computer vision'
 const countCV1 = document.querySelector("#countCV1");
 const countCV2 = document.querySelector("#countCV2");
@@ -266,5 +268,7 @@ function loadingState () {
 cargarDatosUsuario ()
 getPuntos();
 mostrarPuntos();
-loadingState();
+if (userAgent.includes("Android") || userAgent.includes("iPhone")) {
+  loadingState();
+}
 showCVfeature();

@@ -225,7 +225,7 @@ async function countCV(imageFile) {
   try {
   const formData = new FormData();
   formData.append("image", imageFile.files[0]);
-  const response = await fetch("http://143.198.62.203:5000/countPoints", {
+  const response = await fetch("https://domino.bydpropertiesllc.com/countPoints", {
     method: "POST",
     body: formData,
   }).finally(() => {

@@ -28,29 +28,29 @@ var totalEquipo2 = 0;
 var menuAbierto = false;
 const miStorage = window.localStorage;
 
-btnAgregarBono1.addEventListener("click",(e) => {
+btnAgregarBono1.addEventListener("click", (e) => {
   e.preventDefault();
   let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
-  if (input.value == ""){
-    input.value = parseInt(obtenerBono1LocalStorage.bono); 
-  }else if (input.value != ""){
-    input.value = parseInt(input.value) + parseInt(obtenerBono1LocalStorage.bono); 
+  if (input.value == "") {
+    input.value = parseInt(obtenerBono1LocalStorage.bono);
+  } else if (input.value != "") {
+    input.value = parseInt(input.value) + parseInt(obtenerBono1LocalStorage.bono);
   }
-  
+
 })
 
-btnAgregarBono2.addEventListener("click",(e) => {
+btnAgregarBono2.addEventListener("click", (e) => {
   e.preventDefault();
   let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
-  if (input2.value == ""){
-    input2.value = parseInt(obtenerBono1LocalStorage.bono); 
-  }else if (input2.value != ""){
-    input2.value = parseInt(input2.value) + parseInt(obtenerBono1LocalStorage.bono); 
+  if (input2.value == "") {
+    input2.value = parseInt(obtenerBono1LocalStorage.bono);
+  } else if (input2.value != "") {
+    input2.value = parseInt(input2.value) + parseInt(obtenerBono1LocalStorage.bono);
   }
-  
+
 })
 
-btnSetting.addEventListener("click",() => {
+btnSetting.addEventListener("click", () => {
   if (menuAbierto == false) {
     settingsMenu.classList.remove("settings-menu-hide")
     menuAbierto = true
@@ -66,17 +66,17 @@ btnCancelar.addEventListener("click", () => {
   txtNombreEquipo1.value = ""
   txtNombreEquipo2.value = ""
   txtBono.value = ""
-}) 
+})
 
-btnGuardar.addEventListener("click" ,() => {
+btnGuardar.addEventListener("click", () => {
   let datosUsuario = {
-    "equipo1":txtNombreEquipo1.value,
-    "equipo2":txtNombreEquipo2.value,
-    "bono":txtBono.value
-    
+    "equipo1": txtNombreEquipo1.value,
+    "equipo2": txtNombreEquipo2.value,
+    "bono": txtBono.value
+
   }
-  miStorage.setItem("datosUsuario",JSON.stringify(datosUsuario)) //json a texto para guardar en el local storage//
-  console.log (JSON.parse(miStorage.getItem("datosUsuario")))
+  miStorage.setItem("datosUsuario", JSON.stringify(datosUsuario)) //json a texto para guardar en el local storage//
+  console.log(JSON.parse(miStorage.getItem("datosUsuario")))
   let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
   console.log(datosUsuariodelLocalStorage.equipo1)
   console.log(datosUsuariodelLocalStorage.equipo2)
@@ -84,30 +84,31 @@ btnGuardar.addEventListener("click" ,() => {
   cargarDatosUsuario();
   menuAbierto = false
   settingsMenu.classList.add("settings-menu-hide")
-}) 
+})
 
-function cargarDatosUsuario () {
+function cargarDatosUsuario() {
   let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
   lblNombreEquipo1.innerHTML = datosUsuariodelLocalStorage.equipo1;
   btnAgregarBono1.innerHTML = datosUsuariodelLocalStorage.bono
   btnAgregarBono2.innerHTML = datosUsuariodelLocalStorage.bono
   lblNombreEquipo2.innerHTML = datosUsuariodelLocalStorage.equipo2;
 }
+
 function getPuntos() {
-  
+
   let puntosEquipo1 = miStorage.getItem("equipo1")
-  if (puntosEquipo1!= null ) {
-  puntosEquipo1 = puntosEquipo1.split(",")
-  puntajeEquipo1 = puntosEquipo1
-  console.log(puntosEquipo1)
+  if (puntosEquipo1 != null) {
+    puntosEquipo1 = puntosEquipo1.split(",")
+    puntajeEquipo1 = puntosEquipo1
+    console.log(puntosEquipo1)
   }
- 
+
   let puntosEquipo2 = miStorage.getItem("equipo2")
-  if (puntosEquipo2!= null ) {
-  puntosEquipo2 = puntosEquipo2.split(",")
-  puntajeEquipo2 = puntosEquipo2
-  console.log(puntosEquipo2)
-}
+  if (puntosEquipo2 != null) {
+    puntosEquipo2 = puntosEquipo2.split(",")
+    puntajeEquipo2 = puntosEquipo2
+    console.log(puntosEquipo2)
+  }
 }
 
 
@@ -119,7 +120,10 @@ function mostrarPuntos() {
     const p = document.createElement('p');
     p.textContent = punto;
     li.appendChild(p);
+    li.appendChild(addbtnDelete1());
+    li.className = 'd-flex mt-3'
     ulequipo1.appendChild(li)
+    input.vaule = "";
   })
 
   ulequipo2.innerHTML = "";
@@ -128,7 +132,10 @@ function mostrarPuntos() {
     const p = document.createElement('p');
     p.textContent = punto;
     li.appendChild(p);
+    li.appendChild(addbtnDelete2());
+    li.className = 'd-flex mt-3'
     ulequipo2.appendChild(li)
+    input.vaule = "";
   })
   calcularTotalEquipo1();
   calcularTotalEquipo2();
@@ -155,10 +162,10 @@ addbtn1.addEventListener("click", (e) => {
 
   const text = input.value;
   if (input.value !== "") {
-  puntajeEquipo1.push(text);
-  miStorage.setItem("equipo1", puntajeEquipo1)
-  getPuntos();
-  mostrarPuntos();
+    puntajeEquipo1.push(text);
+    miStorage.setItem("equipo1", puntajeEquipo1)
+    getPuntos();
+    mostrarPuntos();
   }
   input.value = "";
 });
@@ -168,22 +175,74 @@ addbtn2.addEventListener("click", (e) => {
 
   const text = input2.value;
   if (input2.value !== "") {
-  puntajeEquipo2.push(text);
-  miStorage.setItem("equipo2",puntajeEquipo2)
-  getPuntos();
-  mostrarPuntos();
+    puntajeEquipo2.push(text);
+    miStorage.setItem("equipo2", puntajeEquipo2)
+    getPuntos();
+    mostrarPuntos();
   }
   input2.value = "";
 
 });
 
-btnReset.addEventListener("click",() => {
- localStorage.removeItem("equipo1");
- localStorage.removeItem("equipo2");
- location.reload()
+btnReset.addEventListener("click", () => {
+  localStorage.removeItem("equipo1");
+  localStorage.removeItem("equipo2");
+  location.reload()
 }
 )
-cargarDatosUsuario ()
+
+function addbtnDelete1() {
+  const deleteBtn = document.createElement('button')
+
+  deleteBtn.textContent = "X"
+  deleteBtn.className = "btn col-2 text-danger"
+
+  deleteBtn.addEventListener("click", (e) => {
+    const item = e.target.parentElement;
+    const index = Array.from(ulequipo1.children).indexOf(item); // Obtener el índice del elemento
+
+    // Eliminar el elemento del arreglo puntajeEquipo1
+    puntajeEquipo1.splice(index, 1);
+
+    // Actualizar el localStorage con el nuevo arreglo de puntos para equipo1
+    miStorage.setItem("equipo1", puntajeEquipo1);
+
+    // Eliminar el elemento del DOM
+    ulequipo1.removeChild(item);
+
+    // Recalcular el total del equipo 1 y actualizar la UI
+    calcularTotalEquipo1();
+  })
+
+  return deleteBtn;
+}
+
+function addbtnDelete2() {
+  const deleteBtn = document.createElement('button')
+
+  deleteBtn.textContent = "X"
+  deleteBtn.className = "btn col-2 text-danger"
+
+  deleteBtn.addEventListener("click", (e) => {
+    const item = e.target.parentElement;
+    const index = Array.from(ulequipo2.children).indexOf(item); // Obtener el índice del elemento
+
+    // Eliminar el elemento del arreglo puntajeEquipo2
+    puntajeEquipo2.splice(index, 1);
+
+    // Actualizar el localStorage con el nuevo arreglo de puntos para equipo2
+    miStorage.setItem("equipo2", puntajeEquipo2);
+
+    // Eliminar el elemento del DOM
+    ulequipo2.removeChild(item);
+
+    // Recalcular el total del equipo 2 y actualizar la UI
+    calcularTotalEquipo2();
+  })
+
+  return deleteBtn;
+}
+cargarDatosUsuario()
 getPuntos();
 mostrarPuntos();
 

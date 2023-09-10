@@ -213,7 +213,7 @@ btnReset.addEventListener("click", () => {
 function addbtnDelete1() {
   const deleteBtn = document.createElement('button')
 
-  deleteBtn.innerHTML = "<i class='bi bi-eraser'></i>";
+  deleteBtn.textContent = "x";
   deleteBtn.className = "btn col-2 text-danger"
 
   deleteBtn.addEventListener("click", (e) => {
@@ -239,7 +239,7 @@ function addbtnDelete1() {
 function addbtnDelete2() {
   const deleteBtn = document.createElement('button')
 
-  deleteBtn.innerHTML = "<i class='bi bi-eraser'></i>";
+  deleteBtn.textContent = "x";
   deleteBtn.className = "btn col-2 text-danger"
 
   deleteBtn.addEventListener("click", (e) => {

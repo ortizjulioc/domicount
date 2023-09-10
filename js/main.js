@@ -42,9 +42,9 @@ btnAgregarBono1.addEventListener("click", (e) => {
   e.preventDefault();
   let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
   if (input.value == "") {
-    input.value = parseInt(obtenerBono1LocalStorage.bono);
+    input.value = parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
   } else if (input.value != "") {
-    input.value = parseInt(input.value) + parseInt(obtenerBono1LocalStorage.bono);
+    input.value = parseInt(input.value) + parseInt(obtenerBono1LocalStorage.bono ?  obtenerBono1LocalStorage.bono : 30);
   }
 
 })
@@ -53,9 +53,9 @@ btnAgregarBono2.addEventListener("click", (e) => {
   e.preventDefault();
   let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
   if (input2.value == "") {
-    input2.value = parseInt(obtenerBono1LocalStorage.bono);
+    input2.value = parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
   } else if (input2.value != "") {
-    input2.value = parseInt(input2.value) + parseInt(obtenerBono1LocalStorage.bono);
+    input2.value = parseInt(input2.value) + parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
   }
 
 })

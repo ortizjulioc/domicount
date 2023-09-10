@@ -110,6 +110,11 @@ function getPuntos() {
   let puntosEquipo1 = miStorage.getItem("equipo1")
   if (puntosEquipo1 != null) {
     puntosEquipo1 = puntosEquipo1.split(",")
+    // delete elements with ''
+    puntosEquipo1 = puntosEquipo1.filter((element) => {
+      return element != '';
+    });
+
     puntajeEquipo1 = puntosEquipo1
     console.log(puntosEquipo1)
   }
@@ -117,6 +122,9 @@ function getPuntos() {
   let puntosEquipo2 = miStorage.getItem("equipo2")
   if (puntosEquipo2 != null) {
     puntosEquipo2 = puntosEquipo2.split(",")
+    puntosEquipo2 = puntosEquipo2.filter((element) => {
+      return element != '';
+    });
     puntajeEquipo2 = puntosEquipo2
     console.log(puntosEquipo2)
   }

@@ -99,8 +99,8 @@ btnGuardar.addEventListener("click", () => {
 function cargarDatosUsuario() {
   let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
   lblNombreEquipo1.innerHTML = datosUsuariodelLocalStorage.equipo1;
-  btnAgregarBono1.innerHTML = datosUsuariodelLocalStorage.bono
-  btnAgregarBono2.innerHTML = datosUsuariodelLocalStorage.bono
+  btnAgregarBono1.innerHTML = datosUsuariodelLocalStorage.bono ? datosUsuariodelLocalStorage.bono : 30;
+  btnAgregarBono2.innerHTML = datosUsuariodelLocalStorage.bono ? datosUsuariodelLocalStorage.bono : 30;
   lblNombreEquipo2.innerHTML = datosUsuariodelLocalStorage.equipo2;
 
 }

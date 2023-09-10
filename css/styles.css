@@ -42,13 +42,13 @@ footer {
 
 .settings-menu {
   max-width: 250px;
+  right:20%;
   height: auto;
   position: absolute;
   box-shadow: -3px 1px 27px 0px rgba(0, 0, 0, 0.28);
   -webkit-box-shadow: -3px 1px 27px 0px rgba(0, 0, 0, 0.28);
   -moz-box-shadow: -3px 1px 27px 0px rgba(0, 0, 0, 0.28);
   background-color: white;
-  margin:auto;
 }
 
 .settings-menu input {

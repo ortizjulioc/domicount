@@ -56,7 +56,7 @@ footer {
 }
 
 .settings-menu-hide {
-  display: none !important;
+  display: none;
 }
 
 .github-logo {
@@ -161,9 +161,7 @@ footer {
 @keyframes lds-spinner {
   0% {
     opacity: 1;
-  }
-  100% {
-    opacity: 0;
+    display: none;
   }
 }
 

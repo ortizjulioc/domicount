@@ -35,7 +35,7 @@ var puntajeEquipo1 = []
 var puntajeEquipo2 = []
 var totalEquipo1 = 0;
 var totalEquipo2 = 0;
-var menuAbierto = false;
+var menuAbierto = true;
 const miStorage = window.localStorage;
 
 btnAgregarBono1.addEventListener("click", (e) => {

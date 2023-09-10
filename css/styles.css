@@ -15,7 +15,6 @@ footer {
   bottom: 0;
   width: 100%;
   height: 80px;/* Footer height */
-  position: absolute;
 }
 
 .domino {
@@ -25,7 +24,7 @@ footer {
 }
 
 .imagenlogo {
-  height: 150px;
+  height: 50px;
   padding: 0px;
 }
 

@@ -1,77 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head class="d-flex">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <title>Domicount</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domicount</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
+
 <body>
   <div class="loader-container hide-feature">
-    <div class="lds-spinner hide-feature"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div class="lds-spinner hide-feature">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
-<header class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-  <div class="text-center ">
-    <div class="row align-items-start">
-      <div class="col-3 img text-center">
-        <img class="imagenlogo" src="imagenes/domicount.png" alt="">
-        <div class="col-3 text-center fs-2 fw-bold d-flex justify-content-start">
-          <p class="domino">Domicount</p>
+  <header class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+    <div class="text-center ">
+      <div class="row align-items-start">
+        <div class="col-3 img text-center">
+          <img class="imagenlogo" src="imagenes/domicount.png" alt="">
+        </div>
+        <div class="col-6 text-end">
+          <button id="btnSetting" class="btn bi bi-gear fs-3 text-secondary"></button>
+          <div id="settings" class="settings-menu settings-menu-hide">
+            <div class="row p-3">
+              <div class="col-12 text-start"><label for="">Bono</label></div>
+              <div class="col-12">
+                <input type="number" value="30" class="form-control" id="txtBono">
+              </div>
+              <div class="col-12 text-start"><label for="">Nombre equipo 1</label></div>
+              <div class="col-12">
+                <input type="text" class="form-control" id="txtNombreEquipo1">
+              </div>
+              <div class="col-12 text-start"> <label for="">Nombre equipo 2</label></div>
+              <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
+
+              <div class="col-6 mt-3 justify-content-center mt-3">
+                <button id="btnGuardar" class="btn btn-info text-white btn-block">Guardar</button>
+              </div>
+              <div class="col-6 mt-3 justify-content-center"><button id="btnCancelar"
+                  class="btn btn-outline-danger">Cancelar</button></div>
+              <div class="col-12 mt-3"><button class="btn btn-outline-danger form-control"
+                  id="btnReset">Reiniciar</button></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-6 text-end">
-       <button id="btnSetting" class="btn bi bi-gear fs-3 text-secondary"></button>
-      <div id="settings" class="settings-menu settings-menu-hide">
-        <div class="row p-3">
-            <div class="col-12 text-start"><label for="">Bono</label></div>
-            <div class="col-12">
-                <input type="number" value="30" class="form-control" id="txtBono">
-            </div>
-            <div class="col-12 text-start"><label for="">Nombre equipo 1</label></div>
-            <div class="col-12">
-                <input type="text" class="form-control" id="txtNombreEquipo1">
-            </div>
-            <div class="col-12 text-start"> <label for="">Nombre equipo 2</label></div>
-            <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
-            
-            <div class="col-6 mt-3 justify-content-center mt-3">
-                <button id="btnGuardar" class="btn btn-info text-white btn-block">Guardar</button>
-            </div>
-            <div class="col-6 mt-3 justify-content-center"><button id="btnCancelar" class="btn btn-outline-danger">Cancelar</button></div>
-            <div class="col-12 mt-3"><button class="btn btn-outline-danger form-control" id="btnReset">Reiniciar</button></div>
-        </div>
-</div>
-</div>
-</div>
-</div>
-</header>
-  
+    </div>
+  </header>
+
   <section class="anotar">
     <div class="text-center p-5">
       <div class="row">
-  
+
         <div class="col-6 border-end border-2 border-black">
           <div class="row">
             <span id="lblNombreEquipo1" class="mb-3">Equipo 1</span>
-            <form class="d-flex">
-              <div class="col-4">
-                <input id="eq1" type="number" class="form-control ipequipo1 "placeholder="0">
-              </div>
-              <div class="col-3">
-                <button id="agregarBono1" class="btn btn-outline-warning btn-block voton1">Bono</button>
-              </div>
-              <div class="col-2 feature-container">
-                <button id="countCV1" class="btn btn-primary btn-feature">
-                  <i class="bi bi-camera"></i>
-                </button>
-                <input type="file" id="imageFile1" capture="enviroment" accept="image/*" style="display:none;"/>
-              </div>
-              <div class="col-3">
-                <button id="btn1" class="btn btn-info text-white btn-block voton1"> +</button>
+          </div>
+          <div class="row">
+            <form class="d-flex justify-content-center">
+              <div class="row">
+                <div class="col-12">
+                  <input id="eq1" type="number" class="form-control ipequipo1 " placeholder="0">
+                </div>
+                <div class="col-12 d-flex mt-2">
+                  <div class="col-4">
+                    <button id="agregarBono1" class="btn btn-outline-warning btn-block voton1 btn-sm">30</button>
+                  </div>
+                  <div class="col-4">
+                    <button id="btn1" class="btn btn-info text-white btn-block voton1"> +</button>
+                  </div>
+                  <div class="col-4">
+                    <button id="countCV1" class="btn btn-primary btn-feature btn-sm">
+                      <i class="bi bi-camera"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -88,23 +107,28 @@
         <div class="col-6">
           <div class="row">
             <span id="lblNombreEquipo2" class="mb-3">Equipo 2</span>
-            <form class="d-flex">
-              <div class="col-4">
-                <input id="eq2" type="number" class="form-control ipequipo2" placeholder="0">
+          </div>
+          <div class="row">
+            <form class="d-flex justify-content-center">
+              <div class="row">
+                <div class="col-12">
+                  <input id="eq2" type="number" class="form-control ipequipo2" placeholder="0">
+                </div>
+                <div class="col-12 d-flex mt-2">
+                  <div class="col-4 justify-content-center text-center">
+                    <button id="agregarBono2" class="btn btn-outline-warning btn-sm">30</button>
+                  </div>
+                  <div class="col-4 justify-content-center text-center">
+                    <button id="btn2" class="btn btn-info text-white voton2">+</button> 
+                  </div>
+                  <div class="col-4 justify-content-center text-center">
+                    <button id="countCV2" class="btn btn-primary btn-sm btn-feature">
+                      <i class="bi bi-camera"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div class="col-3">
-                <button id="agregarBono2" class="btn btn-outline-warning voton1">Bono</button>
-              </div>
-              <div class="col-2 feature-container">
-                <button id="countCV2" class="btn btn-primary btn-feature">
-                  <i class="bi bi-camera"></i>
-                </button>
-                <input type="file" id="imageFile2" capture="enviroment" accept="image/*" style="display:none;"/>
-              </div>
-              <div class="col-3">
-                <button id="btn2" class="btn btn-info text-white voton2">+</button>
-              </div>
-          </form>
+            </form>
           </div>
           <div class="row">
             <ol class="ulequipo2 col-6 pt-4">
@@ -113,23 +137,15 @@
           <div class="row">
             <div class="col-3  text-info fs-5 justify-content-center"><span id="totalEquipo2"></span></div>
           </div>
+        </div>
       </div>
-    </div>
   </section>
-  <footer class="shadow-sm p-3 bg-body-tertiary rounded">
-    <div class="text-center">
-      <div class="row align-items-start">
-        <div class="col text fs-2 fw-bold d-flex justify-content-start">
-        </div>
-        <div class="img">
-          <a href="https://github.com/ortizjulioc/domicount" target="_blank" class="github-logo"><i class="bi bi-github fs-1"></i></a>
-        </div>
-        <div class="col text-end">
-        </div>
-      </div>
-    </div>
-  </footer>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-   <script src="js/main.js"></script>
+  <input type="file" id="imageFile2" capture="enviroment" accept="image/*" style="display:none;" />
+  <input type="file" id="imageFile1" capture="enviroment" accept="image/*" style="display:none;" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -1,9 +1,17 @@
+const input = document.querySelector('.ipequipo1');
+const addbtn1 = document.querySelector('#btn1');
 const ulequipo1 = document.querySelector('.ulequipo1');
+
+const input2 = document.querySelector('.ipequipo2');
+const addbtn2 = document.querySelector('.voton2');
 const ulequipo2 = document.querySelector('.ulequipo2');
 const spanTotalEquipo1 = document.querySelector("#totalEquipo1")
 const spanTotalEquipo2 = document.querySelector("#totalEquipo2")
 
 const settingsMenu = document.querySelector("#settings");
+const txtBono = document.querySelector("#txtBono");
+const txtNombreEquipo1 = document.querySelector("#txtNombreEquipo1");
+const txtNombreEquipo2 = document.querySelector("#txtNombreEquipo2");
 const btnGuardar = document.querySelector("#btnGuardar");
 const btnCancelar = document.querySelector("#btnCancelar");
 const btnSetting = document.querySelector("#btnSetting");
@@ -18,11 +26,13 @@ const tableListaPuntos = document.querySelector("#tableListaPuntos");
 var maxPuntos = 200;
 const txtPuntosParaGanar = document.querySelector("#txtPuntosParaGanar");
 
+const userAgent = window.navigator.userAgent;
+
 // boton para llamar al procesamiento de imagenes CV significa 'computer vision'
-
-const imageFile1 = document.querySelector("#imageFile");
-const btnAddCV = document.querySelector("#btnAddCV");
-
+const countCV1 = document.querySelector("#countCV1");
+const countCV2 = document.querySelector("#countCV2");
+const imageFile1 = document.querySelector("#imageFile1");
+const imageFile2 = document.querySelector("#imageFile2");
 const featureContainer = document.querySelector(".feature-container");
 var loading = false;
 
@@ -30,25 +40,29 @@ var puntajes = []
 var totalEquipo1 = 0;
 var totalEquipo2 = 0;
 var menuAbierto = false;
-
-const btnNum1 = document.querySelector("#btnNum1");
-const btnNum2 = document.querySelector("#btnNum2");
-const btnNum3 = document.querySelector("#btnNum3");
-const btnNum4 = document.querySelector("#btnNum4");
-const btnNum5 = document.querySelector("#btnNum5");
-const btnNum6 = document.querySelector("#btnNum6");
-const btnNum7 = document.querySelector("#btnNum7");
-const btnNum8 = document.querySelector("#btnNum8");
-const btnNum9 = document.querySelector("#btnNum9");
-const btnNum0 = document.querySelector("#btnNum0");
-const btnBonus = document.querySelector("#btnBonus");
-const btnClear = document.querySelector("#btnClear");
-const btnAddEquipo1 = document.querySelector("#btnAddEquipo1");
-const btnAddEquipo2 = document.querySelector("#btnAddEquipo2");
-
-const txtPuntos = document.querySelector("#txtPuntos");
-
 const miStorage = window.localStorage;
+
+btnAgregarBono1.addEventListener("click", (e) => {
+  e.preventDefault();
+  let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
+  if (input.value == "") {
+    input.value = parseInt(obtenerBono1LocalStorage.bono);
+  } else if (input.value != "") {
+    input.value = parseInt(input.value) + parseInt(obtenerBono1LocalStorage.bono);
+  }
+
+})
+
+btnAgregarBono2.addEventListener("click", (e) => {
+  e.preventDefault();
+  let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
+  if (input2.value == "") {
+    input2.value = parseInt(obtenerBono1LocalStorage.bono);
+  } else if (input2.value != "") {
+    input2.value = parseInt(input2.value) + parseInt(obtenerBono1LocalStorage.bono);
+  }
+
+})
 
 btnSetting.addEventListener("click", () => {
   if (menuAbierto == false) {
@@ -58,8 +72,8 @@ btnSetting.addEventListener("click", () => {
     settingsMenu.classList.add("settings-menu-hide")
     menuAbierto = false
   }
-})
-
+}
+)
 btnCancelar.addEventListener("click", () => {
   menuAbierto = false
   settingsMenu.classList.add("settings-menu-hide")
@@ -200,6 +214,30 @@ function addbtnDelete2() {
 
   return deleteBtn;
 }
+
+countCV1.addEventListener("click",(e) => {
+  e.preventDefault();
+  imageFile1.click();
+})
+
+imageFile1.addEventListener("change", async (e) => {
+  e.preventDefault();
+  countCV(imageFile1).then((result) => {
+    input.value = result.points;
+  });
+})
+
+countCV2.addEventListener("click",(e) => {
+  e.preventDefault();
+  imageFile2.click();
+})
+
+imageFile2.addEventListener("change", async (e) => {
+  e.preventDefault();
+  countCV(imageFile2).then((result) => {
+    input2.value = result.points;
+  });
+})
 
 async function countCV(imageFile) {
   loading = true;

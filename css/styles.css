@@ -29,7 +29,7 @@ footer {
 }
 
 .anotar {
-  height: auto;
+  height: 300px;
 }
 
 .ipequipo1 {
@@ -49,7 +49,7 @@ footer {
   -webkit-box-shadow: -3px 1px 27px 0px rgba(0, 0, 0, 0.28);
   -moz-box-shadow: -3px 1px 27px 0px rgba(0, 0, 0, 0.28);
   background-color: white;
-  z-index: 1;
+  z-index: 3;
 }
 
 .settings-menu input {

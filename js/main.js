@@ -168,7 +168,8 @@ function addbtnDelete1() {
   const deleteBtn = document.createElement('button')
 
   deleteBtn.textContent = "x";
-  deleteBtn.className = "btn col-2 text-danger"
+  deleteBtn.className = "btn btn-outline-danger btn-sm text-danger"
+  deleteBtn.style = "border-radius: 100%;width: 30px;height: 30px;"
 
   deleteBtn.addEventListener("click", (e) => {
     const item = e.target.parentElement;
@@ -194,7 +195,8 @@ function addbtnDelete2() {
   const deleteBtn = document.createElement('button')
 
   deleteBtn.textContent = "x";
-  deleteBtn.className = "btn col-2 text-danger"
+  deleteBtn.className = "btn btn-outline-danger btn-sm text-danger"
+  deleteBtn.style = "border-radius: 100%;width: 30px;height: 30px;"
 
   deleteBtn.addEventListener("click", (e) => {
     const item = e.target.parentElement;

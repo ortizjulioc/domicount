@@ -17,6 +17,10 @@ footer {
   height: 80px;/* Footer height */
 }
 
+header { 
+  width: 80%;
+}
+
 .domino {
   text-shadow: 3px 4px 4px rgb(36, 61, 113);
   color: rgb(11, 5, 27);
@@ -24,7 +28,7 @@ footer {
 }
 
 .imagenlogo {
-  height: 50px;
+  height: 75px;
   padding: 0px;
 }
 
@@ -78,8 +82,13 @@ footer {
 .btn-feature {
   background-color:#b22eff !important;
   border-color: #b22eff !important;
+  transition: ease 0.5s;
 }
 
+.btn-feature:hover {
+  transform: scale(1.1);
+  transition: ease 0.5s;
+}
 .hide-feature {
   display: none !important;
 }
@@ -175,38 +184,12 @@ footer {
   background-color: rgba(48, 76, 80, 0.5);
 }
 
-.txtPuntos {
-  text-align:right;
+tbody tr {
+  transition: ease 0.5s;
 }
 
-.puntos-lista {
-  max-height:100px;
-  overflow: scroll;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-}
-
-.header {
-  background-color: #ececec;
-  width: 100%;
-}
-
-.keypad-key {
-  width:50%;
-  height: 60px;
-}
-
-.keypad-control {
-  width:50%;
-  height: 40px;
-  transition: ease 0.05s;
-}
-
-.keypad-control:hover {
+tbody tr:hover {
   transform: scale(1.1);
-  transition: ease 0.05s;
-}
-
-.keypad-key:hover {
-  transform: scale(1.1);
-  transition: ease 0.05s;
+  filter: brightness(0.9);
+  transition: ease 0.5s;
 }

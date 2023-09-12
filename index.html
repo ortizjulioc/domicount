@@ -29,122 +29,121 @@
       <div></div>
     </div>
   </div>
-  <header>
-    <div class="text-center header">
-      <div class="row align-items-start">
-        <div class="col-3 img text-center">
-          <img class="imagenlogo" src="imagenes/domicount.png" alt="">
-        </div>
-        <div class="col-6 text-end">
-          <div id="settings" class="settings-menu settings-menu-hide">
-            <div class="row p-3">
-              <div class="col-12 text-start"><label for="">Paso redondo y capicua</label></div>
-              <div class="col-12">
-                <input type="number" value="30" class="form-control" id="txtBono">
-              </div>
-              <div class="col-12 text-start"><label for="">Nombre equipo 1</label></div>
-              <div class="col-12">
-                <input type="text" class="form-control" id="txtNombreEquipo1">
-              </div>
-              <div class="col-12 text-start"> <label for="">Nombre equipo 2</label></div>
-              <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
-
-              <div class="col-6 mt-3 justify-content-center mt-3">
-                <button id="btnGuardar" class="btn btn-info text-white btn-block">Guardar</button>
-              </div>
-              <div class="col-6 mt-3 justify-content-center"><button id="btnCancelar"
-                  class="btn btn-outline-danger">Cancelar</button></div>
-              <div class="col-12 mt-3"><button class="btn btn-outline-danger form-control"
-                  id="btnReset">Reiniciar</button></div>
-            </div>
-          </div>
-        </div>
+<header>
+  <div class="text-center ">
+    <div class="row align-items-start">
+      <div class="col-3 img text-center">
+        <img class="imagenlogo" src="imagenes/domicount.png" alt="">
       </div>
-    </div>
-  </header>
-
-  <section class="row anotar">
+      <div class="col-6 text-end">
+       <button id="btnSetting" class="btn bi bi-gear fs-3 text-secondary"></button>
+      <div id="settings" class="settings-menu settings-menu-hide">
+        <div class="row p-3">
+            <div class="col-12 text-start"><label>Puntos para ganar</label></div>
+            <div class="col-12">
+              <input type="text" id="txtPuntosParaGanar" class="form-control" placeholder="0" value="200">
+            </div>
+            <div class="col-12 text-start"><label for="">Bono</label></div>
+            <div class="col-12">
+                <input type="number" value="30" class="form-control" id="txtBono">
+            </div>
+            <div class="col-12 text-start"><label for="">Nombre equipo 1</label></div>
+            <div class="col-12">
+                <input type="text" class="form-control" id="txtNombreEquipo1">
+            </div>
+            <div class="col-12 text-start"> <label for="">Nombre equipo 2</label></div>
+            <div class="col-12"><input class="form-control" type="text" id="txtNombreEquipo2"></div>
+            
+            <div class="col-6 mt-3 justify-content-center mt-3">
+                <button id="btnGuardar" class="btn btn-info text-white btn-block">Guardar</button>
+            </div>
+            <div class="col-6 mt-3 justify-content-center"><button id="btnCancelar" class="btn btn-outline-danger">Cancelar</button></div>
+            <div class="col-12 mt-3"><button class="btn btn-outline-danger form-control" id="btnReset">Reiniciar</button></div>
+        </div>
+</div>
+</div>
+</div>
+</div>
+</header>
+  
+  <section class="anotar">
     <div class="text-center p-5">
       <div class="row">
         <div class="col-6 border-end border-2 border-gray">
           <div class="row">
-            <span id="lblNombreEquipo1" class="mb-3">Equipo 1</span>
+            
+            <form class="d-flex flex-wrap">
+              <div class="col-12">
+                <input id="eq1" type="number" class="form-control ipequipo1 "placeholder="0">
+              </div>
+              <div class="col-12 d-flex flex-nowrap mt-1">
+                <div class="col-6">
+                <button id="agregarBono1" class="btn btn-outline-warning form-control voton1">+30</button>
+              </div>
+              <div class="col-6 feature-container">
+                <button id="countCV1" class="btn btn-feature text-white  form-control">
+                  <i class="bi bi-camera"></i>
+                </button>
+                <input type="file" id="imageFile1" capture="enviroment" accept="image/*" style="display:none;"/>
+              </div>
+              </div>
+            </form>
           </div>
           <div class="row">
-            <ol class="ulequipo1 col-6 pt-4 puntos-lista">
-            </ol>
-            <div class="row">
-              <div class="col-3 text-info fs-5 text-center"><span id="totalEquipo1"></span></div>
-            </div>
           </div>
         </div>
 
         <div class="col-6">
           <div class="row">
-            <span id="lblNombreEquipo2" class="mb-3">Equipo 2</span>
+            
+            <form class="d-flex flex-wrap">
+              <div class="col-12">
+                <input id="eq2" type="number" class="form-control ipequipo2" placeholder="0">
+              </div>
+             <div class="col-12 d-flex flex-nowrap mt-1">
+              <div class="col-6">
+                <button id="agregarBono2" class="btn btn-outline-warning voton1 form-control">+30</button>
+              </div>
+              <div class="col-6 feature-container">
+                <button id="countCV2" class="btn btn-feature text-white form-control">
+                  <i class="bi bi-camera"></i>
+                </button>
+                <input type="file" id="imageFile2" capture="enviroment" accept="image/*" style="display:none;"/>
+              </div>
+             </div>
+          </form>
           </div>
           <div class="row">
-            <ol class="ulequipo2 col-6 pt-4 puntos-lista">
-            </ol>
-          </div>
-          <div class="row">
-            <div class="col-3  text-info fs-5 justify-content-center"><span id="totalEquipo2"></span></div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="row mt-3">
+      <button class="btn btn-dark mt-1" id="btnAddRound">Añadir ronda</button>
+    </div>
+    <div class="table-puntos">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th><span id="lblNombreEquipo1" class="mb-3">Equipo 1</span></th>
+          <th><span id="lblNombreEquipo2" class="mb-3">Equipo 2</span></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tableListaPuntos">
+      </tbody>
+      <tr id="table-lista-total" class="table-dark">
+        <th><div class="col-3 fs-5 text-center"><span id="totalEquipo1"></span></div></th>
+        <th><div class="col-3 fs-5 justify-content-center"><span id="totalEquipo2"></span></div></th>
+        <th></th>
+      </tr>
+    </table>
+  </div>
   </section>
+  
 
-  <div class="keypad p-5">
-    <div style="width: 100%;height: 40px;">
-    <div class="p-1 input-group">
-      <button class="btn btn-primary btn-feature"id="btnAddCV"><i
-          class="bi bi-camera"></i>
-      </button>
-      <input id="txtPuntos" type="text" class="txtPuntos form-control">
-      <button class="btn btn-danger" id="btnClear">
-        <i class="bi bi-backspace"></i>
-      </button>
-    </div>
-
-    <div class="row mt-1 justify-content-center">
-      <div class="col-12 d-flex flex-nowrap">
-        <button class="btn btn-primary keypad-control" id="btnAddEquipo1">Equipo 1</button>
-        <input type="file" id="imageFile" capture="environment" accept="image/*" style="display:none;" />
-        <button class="btn btn-primary keypad-control" id="btnAddEquipo2">Equipo 2</button>
-      </div>
-      <div class="col-12 d-flex flex-nowrap">
-        <button class="btn btn-light keypad-key" id="btnNum1">1</button>
-        <button class="btn btn-light keypad-key" id="btnNum2">2</button>
-        <button class="btn btn-light keypad-key" id="btnNum3">3</button>
-      </div>
-      <div class="col-12 d-flex flex-nowrap">
-        <button class="btn btn-light keypad-key" id="btnNum4">4</button>
-        <button class="btn btn-light keypad-key" id="btnNum5">5</button>
-        <button class="btn btn-light keypad-key" id="btnNum6">6</button>
-      </div>
-      <div class="col-12 d-flex flex-nowrap">
-        <button class="btn btn-light keypad-key" id="btnNum7">7</button>
-        <button class="btn btn-light keypad-key" id="btnNum8">8</button>
-        <button class="btn btn-light keypad-key" id="btnNum9">9</button>
-      </div>
-      <div class="col-12 d-flex  flex-nowrap">
-        <button class="btn btn-warning keypad-key" id="btnBonus">+30</button>
-        <button class="btn btn-light keypad-key" id="btnNum0">0</button>
-        <button class="btn btn-dark keypad-key" id="btnSetting">
-          <i class="bi bi-gear"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  </div>
-  <input type="file" id="imageFile2" capture="enviroment" accept="image/*" style="display:none;" />
-  <input type="file" id="imageFile1" capture="enviroment" accept="image/*" style="display:none;" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
-  <script src="js/main.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+   <script src="js/main.js"></script>
 </body>
 
 </html>

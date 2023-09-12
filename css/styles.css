@@ -18,6 +18,10 @@ footer {
   position: absolute;
 }
 
+header { 
+  width: 80%;
+}
+
 .domino {
   text-shadow: 3px 4px 4px rgb(36, 61, 113);
   color: rgb(11, 5, 27);
@@ -25,7 +29,7 @@ footer {
 }
 
 .imagenlogo {
-  height: 150px;
+  height: 75px;
   padding: 0px;
 }
 
@@ -78,8 +82,13 @@ footer {
 .btn-feature {
   background-color:#b22eff !important;
   border-color: #b22eff !important;
+  transition: ease 0.5s;
 }
 
+.btn-feature:hover {
+  transform: scale(1.1);
+  transition: ease 0.5s;
+}
 .hide-feature {
   display: none !important;
 }
@@ -175,4 +184,14 @@ footer {
   width: 100%;
   height: 100%;
   background-color: rgba(48, 76, 80, 0.5);
+}
+
+tbody tr {
+  transition: ease 0.5s;
+}
+
+tbody tr:hover {
+  transform: scale(1.1);
+  filter: brightness(0.9);
+  transition: ease 0.5s;
 }

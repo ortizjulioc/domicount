@@ -20,6 +20,11 @@ const btnAgregarBono1 = document.querySelector("#agregarBono1")
 const btnAgregarBono2 = document.querySelector("#agregarBono2")
 const lblNombreEquipo1 = document.querySelector("#lblNombreEquipo1");
 const lblNombreEquipo2 = document.querySelector('#lblNombreEquipo2');
+const btnAddRound = document.querySelector("#btnAddRound");
+const tableListaPuntos = document.querySelector("#tableListaPuntos");
+
+var maxPuntos = 200;
+const txtPuntosParaGanar = document.querySelector("#txtPuntosParaGanar");
 
 const userAgent = window.navigator.userAgent;
 
@@ -31,8 +36,7 @@ const imageFile2 = document.querySelector("#imageFile2");
 const featureContainer = document.querySelector(".feature-container");
 var loading = false;
 
-var puntajeEquipo1 = []
-var puntajeEquipo2 = []
+var puntajes = []
 var totalEquipo1 = 0;
 var totalEquipo2 = 0;
 var menuAbierto = false;
@@ -82,15 +86,11 @@ btnGuardar.addEventListener("click", () => {
   let datosUsuario = {
     "equipo1": txtNombreEquipo1.value,
     "equipo2": txtNombreEquipo2.value,
-    "bono": txtBono.value
+    "bono": txtBono.value,
+    "puntosParaGanar": 200
 
   }
   miStorage.setItem("datosUsuario", JSON.stringify(datosUsuario)) //json a texto para guardar en el local storage//
-  console.log(JSON.parse(miStorage.getItem("datosUsuario")))
-  let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
-  console.log(datosUsuariodelLocalStorage.equipo1)
-  console.log(datosUsuariodelLocalStorage.equipo2)
-  console.log(datosUsuariodelLocalStorage.bono)
   cargarDatosUsuario();
   menuAbierto = false
   settingsMenu.classList.add("settings-menu-hide")
@@ -99,130 +99,90 @@ btnGuardar.addEventListener("click", () => {
 function cargarDatosUsuario() {
   let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
   lblNombreEquipo1.innerHTML = datosUsuariodelLocalStorage.equipo1;
-  btnAgregarBono1.innerHTML = datosUsuariodelLocalStorage.bono
-  btnAgregarBono2.innerHTML = datosUsuariodelLocalStorage.bono
+  btnAgregarBono1.innerHTML = "+" + datosUsuariodelLocalStorage.bono
+  btnAgregarBono2.innerHTML = "+" + datosUsuariodelLocalStorage.bono
   lblNombreEquipo2.innerHTML = datosUsuariodelLocalStorage.equipo2;
-
+  maxPuntos = datosUsuariodelLocalStorage.puntosParaGanar ? datosUsuariodelLocalStorage.puntosParaGanar : 200;
+  txtPuntosParaGanar.value = maxPuntos;
 }
 
 function getPuntos() {
 
-  let puntosEquipo1 = miStorage.getItem("equipo1")
-  if (puntosEquipo1 != null) {
-    puntosEquipo1 = puntosEquipo1.split(",")
-    puntajeEquipo1 = puntosEquipo1
-    console.log(puntosEquipo1)
+  let puntajesLocalStorage = JSON.parse(miStorage.getItem("puntajes"))
+  if (puntajesLocalStorage != null) {
+    puntajesLocalStorage = puntajesLocalStorage.filter(puntos => puntos[0] != "" && puntos[1] != "")
+    puntajes = puntajesLocalStorage;
   }
 
-  let puntosEquipo2 = miStorage.getItem("equipo2")
-  if (puntosEquipo2 != null) {
-    puntosEquipo2 = puntosEquipo2.split(",")
-    puntajeEquipo2 = puntosEquipo2
-    console.log(puntosEquipo2)
-  }
+  calcularTotales();
+
 }
 
 
 function mostrarPuntos() {
 
-  ulequipo1.innerHTML = "";
-  puntajeEquipo1.forEach(punto => {
-    const li = document.createElement('li');
-    const p = document.createElement('p');
-    p.textContent = punto;
-    li.appendChild(p);
-    li.appendChild(addbtnDelete1());
-    li.className = 'd-flex mt-3'
-    ulequipo1.appendChild(li)
-    input.vaule = "";
-  })
+  tableListaPuntos.innerHTML = "";
+  puntajes.forEach(puntaje => {
+    const tr = document.createElement("tr");
+    const th1 = document.createElement("th");
+    const th2 = document.createElement("th");
+    const thAction = document.createElement("th");
 
-  ulequipo2.innerHTML = "";
-  puntajeEquipo2.forEach(punto => {
-    const li = document.createElement('li');
-    const p = document.createElement('p');
-    p.textContent = punto;
-    li.appendChild(p);
-    li.appendChild(addbtnDelete2());
-    li.className = 'd-flex mt-3'
-    ulequipo2.appendChild(li)
-    input.vaule = "";
+    th1.innerHTML = puntaje[0];
+    th2.innerHTML = puntaje[1];
+    thAction.appendChild(addbtnDelete());
+
+    tr.appendChild(th1);
+    tr.appendChild(th2);
+    tr.appendChild(thAction);
+
+    tableListaPuntos.appendChild(tr);
   })
-  calcularTotalEquipo1();
-  calcularTotalEquipo2();
+  calcularTotales();
 }
 
-function calcularTotalEquipo1() {
+function calcularTotales() {
   totalEquipo1 = 0;
-  puntajeEquipo1.forEach(punto => {
-    totalEquipo1 = totalEquipo1 + parseInt(punto);
-  })
-  spanTotalEquipo1.innerHTML = totalEquipo1;
-}
-
-function calcularTotalEquipo2() {
   totalEquipo2 = 0;
-  puntajeEquipo2.forEach(punto => {
-    totalEquipo2 = totalEquipo2 + parseInt(punto);
-  })
+  puntajes.forEach(puntaje => {
+    totalEquipo1 += parseInt(puntaje[0]);
+    totalEquipo2 += parseInt(puntaje[1]);
+  }
+  )
+
+  spanTotalEquipo1.innerHTML = totalEquipo1;
   spanTotalEquipo2.innerHTML = totalEquipo2;
 }
 
-addbtn1.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const text = input.value;
-  if (input.value !== "") {
-    puntajeEquipo1.push(text);
-    miStorage.setItem("equipo1", puntajeEquipo1)
-    getPuntos();
-    mostrarPuntos();
-  }
-  input.value = "";
-});
-
-addbtn2.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const text = input2.value;
-  if (input2.value !== "") {
-    puntajeEquipo2.push(text);
-    miStorage.setItem("equipo2", puntajeEquipo2)
-    getPuntos();
-    mostrarPuntos();
-  }
-  input2.value = "";
-
-});
-
 btnReset.addEventListener("click", () => {
-  localStorage.removeItem("equipo1");
-  localStorage.removeItem("equipo2");
-  location.reload()
+  localStorage.removeItem("puntajes");
+  puntajes = [];
+  mostrarPuntos();
 }
 )
 
-function addbtnDelete1() {
+function addbtnDelete() {
   const deleteBtn = document.createElement('button')
 
   deleteBtn.textContent = "X"
-  deleteBtn.className = "btn col-2 text-danger"
+  deleteBtn.className = "btn btn-outline-danger"
+  deleteBtn.style = 'font-weight:bold;'
 
   deleteBtn.addEventListener("click", (e) => {
-    const item = e.target.parentElement;
-    const index = Array.from(ulequipo1.children).indexOf(item); // Obtener el índice del elemento
+    const item = e.target.parentElement.parentElement;
+    const index = Array.from(tableListaPuntos.children).indexOf(item); // Obtener el índice del elemento
 
-    // Eliminar el elemento del arreglo puntajeEquipo1
-    puntajeEquipo1.splice(index, 1);
+    // Eliminar el elemento del arreglo puntajes
+    puntajes.splice(index, 1);
 
-    // Actualizar el localStorage con el nuevo arreglo de puntos para equipo1
-    miStorage.setItem("equipo1", puntajeEquipo1);
+    // Actualizar el localStorage con el nuevo arreglo de puntos
+    miStorage.setItem("puntajes", JSON.stringify(puntajes));
 
     // Eliminar el elemento del DOM
-    ulequipo1.removeChild(item);
+    tableListaPuntos.removeChild(item);
 
     // Recalcular el total del equipo 1 y actualizar la UI
-    calcularTotalEquipo1();
+    calcularTotales();
   })
 
   return deleteBtn;
@@ -232,7 +192,8 @@ function addbtnDelete2() {
   const deleteBtn = document.createElement('button')
 
   deleteBtn.textContent = "X"
-  deleteBtn.className = "btn col-2 text-danger"
+  deleteBtn.className = "btn btn-outline-danger text-danger"
+  deleteBtn.style = 'border-radius:100%;width:40px;height:40px;'
 
   deleteBtn.addEventListener("click", (e) => {
     const item = e.target.parentElement;
@@ -298,20 +259,6 @@ async function countCV(imageFile) {
   }
 }
 
-
-function showCVfeature() {
-  user_platform = window.navigator.userAgent;
-  if (user_platform.includes("Android") || user_platform.includes("iPhone")) {
-    countCV1.classList.remove("hide-feature");
-    countCV2.classList.remove("hide-feature");
-    featureContainer.classList.remove("hide-feature");
-  } else {
-    countCV1.classList.add("hide-feature");
-    countCV2.classList.add("hide-feature");
-    featureContainer.classList.add("hide-feature");
-  }
-}
-
 function loadingState () {
   const loaderContainer = document.querySelector(".loader-container");
   const loader = document.querySelector(".lds-spinner");
@@ -324,9 +271,27 @@ function loadingState () {
   }
 }
 
-cargarDatosUsuario ()
+btnAddRound.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (input.value == "") {
+    input.value = 0;
+  }
+
+  if (input2.value == "") {
+    input2.value = 0;
+  }
+
+  puntajes.push([input.value, input2.value]);
+  miStorage.setItem("puntajes", JSON.stringify(puntajes));
+
+  mostrarPuntos();
+
+  input.value = "";
+  input2.value = "";
+})
+
+cargarDatosUsuario();
 getPuntos();
 mostrarPuntos();
 loadingState();
-// showCVfeature();
 

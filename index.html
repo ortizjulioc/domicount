@@ -29,15 +29,14 @@
       <div></div>
     </div>
   </div>
-  <header class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-    <div class="text-center ">
+  <header>
+    <div class="text-center header">
       <div class="row align-items-start">
         <div class="col-3 img text-center">
           <img class="imagenlogo" src="imagenes/domicount.png" alt="">
         </div>
         <div class="col-6 text-end">
-          <button id="btnSetting" class="btn bi bi-gear fs-3 text-secondary"></button>
-          <div id="settings" class="settings-menu">
+          <div id="settings" class="settings-menu settings-menu-hide">
             <div class="row p-3">
               <div class="col-12 text-start"><label for="">Paso redondo y capicua</label></div>
               <div class="col-12">
@@ -64,39 +63,15 @@
     </div>
   </header>
 
-  <section class="anotar">
+  <section class="row anotar">
     <div class="text-center p-5">
       <div class="row">
-
         <div class="col-6 border-end border-2 border-gray">
           <div class="row">
             <span id="lblNombreEquipo1" class="mb-3">Equipo 1</span>
           </div>
           <div class="row">
-            <form class="d-flex justify-content-center">
-              <div class="row">
-                <div class="col-12">
-                  <input id="eq1" type="number" class="form-control ipequipo1 " placeholder="0">
-                </div>
-                <div class="col-12 d-flex mt-2">
-                  <div class="col-4">
-                    <button id="agregarBono1" class="btn btn-outline-warning btn-block voton1 btn-sm">30</button>
-                  </div>
-                  <div class="col-4">
-                    <button id="btn1" class="btn btn-info text-white btn-block voton1"> +</button>
-                  </div>
-                  <div class="col-4">
-                    <button id="countCV1" class="btn btn-primary btn-feature btn-sm">
-                      <i class="bi bi-camera"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="row">
-            <ol class="ulequipo1 col-6 pt-4">
+            <ol class="ulequipo1 col-6 pt-4 puntos-lista">
             </ol>
             <div class="row">
               <div class="col-3 text-info fs-5 text-center"><span id="totalEquipo1"></span></div>
@@ -109,29 +84,7 @@
             <span id="lblNombreEquipo2" class="mb-3">Equipo 2</span>
           </div>
           <div class="row">
-            <form class="d-flex justify-content-center">
-              <div class="row">
-                <div class="col-12">
-                  <input id="eq2" type="number" class="form-control ipequipo2" placeholder="0">
-                </div>
-                <div class="col-12 d-flex mt-2">
-                  <div class="col-4 justify-content-center text-center">
-                    <button id="agregarBono2" class="btn btn-outline-warning btn-sm">30</button>
-                  </div>
-                  <div class="col-4 justify-content-center text-center">
-                    <button id="btn2" class="btn btn-info text-white voton2">+</button> 
-                  </div>
-                  <div class="col-4 justify-content-center text-center">
-                    <button id="countCV2" class="btn btn-primary btn-sm btn-feature">
-                      <i class="bi bi-camera"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="row">
-            <ol class="ulequipo2 col-6 pt-4">
+            <ol class="ulequipo2 col-6 pt-4 puntos-lista">
             </ol>
           </div>
           <div class="row">
@@ -140,6 +93,52 @@
         </div>
       </div>
   </section>
+
+  <div style="width: 100%;height: 40px;">
+    <div class="p-1 input-group">
+      <button class="btn btn-primary btn-feature"id="btnAddCV"><i
+          class="bi bi-camera"></i>
+      </button>
+      <input id="txtPuntos" type="text" class="txtPuntos form-control">
+      <button class="btn btn-danger" id="btnClear">
+        <i class="bi bi-backspace"></i>
+      </button>
+    </div>
+
+    <div class="keypad p-1">
+      <div class="row mt-1 justify-content-center">
+        <div class="col-12 d-flex flex-nowrap">
+          <button class="btn btn-primary keypad-control" id="btnAddEquipo1">Equipo 1</button>
+          <input type="file" id="imageFile" capture="environment" accept="image/*" style="display:none;" />
+          <button class="btn btn-primary keypad-control" id="btnAddEquipo2">Equipo 2</button>
+        </div>
+        <div class="col-12 d-flex flex-nowrap">
+          <button class="btn btn-light keypad-key" id="btnNum1">1</button>
+          <button class="btn btn-light keypad-key" id="btnNum2">2</button>
+          <button class="btn btn-light keypad-key" id="btnNum3">3</button>
+        </div>
+        <div class="col-12 d-flex flex-nowrap">
+          <button class="btn btn-light keypad-key" id="btnNum4">4</button>
+          <button class="btn btn-light keypad-key" id="btnNum5">5</button>
+          <button class="btn btn-light keypad-key" id="btnNum6">6</button>
+        </div>
+        <div class="col-12 d-flex flex-nowrap">
+          <button class="btn btn-light keypad-key" id="btnNum7">7</button>
+          <button class="btn btn-light keypad-key" id="btnNum8">8</button>
+          <button class="btn btn-light keypad-key" id="btnNum9">9</button>
+        </div>
+        <div class="col-12 d-flex  flex-nowrap">
+          <button class="btn btn-warning keypad-key" id="btnBonus">+30</button>
+          <button class="btn btn-light keypad-key" id="btnNum0">0</button>
+          <button class="btn btn-dark keypad-key" id="btnSetting">
+            <i class="bi bi-gear"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
   <input type="file" id="imageFile2" capture="enviroment" accept="image/*" style="display:none;" />
   <input type="file" id="imageFile1" capture="enviroment" accept="image/*" style="display:none;" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

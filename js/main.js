@@ -1,17 +1,9 @@
-const input = document.querySelector('.ipequipo1');
-const addbtn1 = document.querySelector('#btn1');
 const ulequipo1 = document.querySelector('.ulequipo1');
-
-const input2 = document.querySelector('.ipequipo2');
-const addbtn2 = document.querySelector('.voton2');
 const ulequipo2 = document.querySelector('.ulequipo2');
 const spanTotalEquipo1 = document.querySelector("#totalEquipo1")
 const spanTotalEquipo2 = document.querySelector("#totalEquipo2")
 
 const settingsMenu = document.querySelector("#settings");
-const txtBono = document.querySelector("#txtBono");
-const txtNombreEquipo1 = document.querySelector("#txtNombreEquipo1");
-const txtNombreEquipo2 = document.querySelector("#txtNombreEquipo2");
 const btnGuardar = document.querySelector("#btnGuardar");
 const btnCancelar = document.querySelector("#btnCancelar");
 const btnSetting = document.querySelector("#btnSetting");
@@ -21,13 +13,11 @@ const btnAgregarBono2 = document.querySelector("#agregarBono2")
 const lblNombreEquipo1 = document.querySelector("#lblNombreEquipo1");
 const lblNombreEquipo2 = document.querySelector('#lblNombreEquipo2');
 
-const userAgent = window.navigator.userAgent;
-
 // boton para llamar al procesamiento de imagenes CV significa 'computer vision'
-const countCV1 = document.querySelector("#countCV1");
-const countCV2 = document.querySelector("#countCV2");
-const imageFile1 = document.querySelector("#imageFile1");
-const imageFile2 = document.querySelector("#imageFile2");
+
+const imageFile1 = document.querySelector("#imageFile");
+const btnAddCV = document.querySelector("#btnAddCV");
+
 const featureContainer = document.querySelector(".feature-container");
 var loading = false;
 
@@ -35,30 +25,26 @@ var puntajeEquipo1 = []
 var puntajeEquipo2 = []
 var totalEquipo1 = 0;
 var totalEquipo2 = 0;
-var menuAbierto = true;
+var menuAbierto = false;
+
+const btnNum1 = document.querySelector("#btnNum1");
+const btnNum2 = document.querySelector("#btnNum2");
+const btnNum3 = document.querySelector("#btnNum3");
+const btnNum4 = document.querySelector("#btnNum4");
+const btnNum5 = document.querySelector("#btnNum5");
+const btnNum6 = document.querySelector("#btnNum6");
+const btnNum7 = document.querySelector("#btnNum7");
+const btnNum8 = document.querySelector("#btnNum8");
+const btnNum9 = document.querySelector("#btnNum9");
+const btnNum0 = document.querySelector("#btnNum0");
+const btnBonus = document.querySelector("#btnBonus");
+const btnClear = document.querySelector("#btnClear");
+const btnAddEquipo1 = document.querySelector("#btnAddEquipo1");
+const btnAddEquipo2 = document.querySelector("#btnAddEquipo2");
+
+const txtPuntos = document.querySelector("#txtPuntos");
+
 const miStorage = window.localStorage;
-
-btnAgregarBono1.addEventListener("click", (e) => {
-  e.preventDefault();
-  let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
-  if (input.value == "") {
-    input.value = parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
-  } else if (input.value != "") {
-    input.value = parseInt(input.value) + parseInt(obtenerBono1LocalStorage.bono ?  obtenerBono1LocalStorage.bono : 30);
-  }
-
-})
-
-btnAgregarBono2.addEventListener("click", (e) => {
-  e.preventDefault();
-  let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
-  if (input2.value == "") {
-    input2.value = parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
-  } else if (input2.value != "") {
-    input2.value = parseInt(input2.value) + parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
-  }
-
-})
 
 btnSetting.addEventListener("click", () => {
   if (menuAbierto == false) {
@@ -68,8 +54,8 @@ btnSetting.addEventListener("click", () => {
     settingsMenu.classList.add("settings-menu-hide")
     menuAbierto = false
   }
-}
-)
+})
+
 btnCancelar.addEventListener("click", () => {
   menuAbierto = false
   settingsMenu.classList.add("settings-menu-hide")
@@ -99,10 +85,7 @@ btnGuardar.addEventListener("click", () => {
 function cargarDatosUsuario() {
   let datosUsuariodelLocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
   lblNombreEquipo1.innerHTML = datosUsuariodelLocalStorage.equipo1;
-  btnAgregarBono1.innerHTML = datosUsuariodelLocalStorage.bono ? datosUsuariodelLocalStorage.bono : 30;
-  btnAgregarBono2.innerHTML = datosUsuariodelLocalStorage.bono ? datosUsuariodelLocalStorage.bono : 30;
   lblNombreEquipo2.innerHTML = datosUsuariodelLocalStorage.equipo2;
-
 }
 
 function getPuntos() {
@@ -142,7 +125,6 @@ function mostrarPuntos() {
     li.appendChild(addbtnDelete1());
     li.className = 'd-flex mt-3'
     ulequipo1.appendChild(li)
-    input.vaule = "";
   })
 
   ulequipo2.innerHTML = "";
@@ -154,7 +136,6 @@ function mostrarPuntos() {
     li.appendChild(addbtnDelete2());
     li.className = 'd-flex mt-3'
     ulequipo2.appendChild(li)
-    input.vaule = "";
   })
   calcularTotalEquipo1();
   calcularTotalEquipo2();
@@ -175,33 +156,6 @@ function calcularTotalEquipo2() {
   })
   spanTotalEquipo2.innerHTML = totalEquipo2;
 }
-
-addbtn1.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const text = input.value;
-  if (input.value !== "") {
-    puntajeEquipo1.push(text);
-    miStorage.setItem("equipo1", puntajeEquipo1)
-    getPuntos();
-    mostrarPuntos();
-  }
-  input.value = "";
-});
-
-addbtn2.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const text = input2.value;
-  if (input2.value !== "") {
-    puntajeEquipo2.push(text);
-    miStorage.setItem("equipo2", puntajeEquipo2)
-    getPuntos();
-    mostrarPuntos();
-  }
-  input2.value = "";
-
-});
 
 btnReset.addEventListener("click", () => {
   localStorage.removeItem("equipo1");
@@ -262,30 +216,6 @@ function addbtnDelete2() {
   return deleteBtn;
 }
 
-countCV1.addEventListener("click",(e) => {
-  e.preventDefault();
-  imageFile1.click();
-})
-
-imageFile1.addEventListener("change", async (e) => {
-  e.preventDefault();
-  countCV(imageFile1).then((result) => {
-    input.value = result.points;
-  });
-})
-
-countCV2.addEventListener("click",(e) => {
-  e.preventDefault();
-  imageFile2.click();
-})
-
-imageFile2.addEventListener("change", async (e) => {
-  e.preventDefault();
-  countCV(imageFile2).then((result) => {
-    input2.value = result.points;
-  });
-})
-
 async function countCV(imageFile) {
   loading = true;
   loadingState();
@@ -331,6 +261,115 @@ function loadingState () {
     loader.classList.remove("hide-feature");
   }
 }
+
+btnNum1.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "1";
+})
+
+btnNum2.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "2";
+})
+
+btnNum3.addEventListener("click", (e) => {
+
+  e.preventDefault();
+
+  txtPuntos.value = txtPuntos.value + "3";
+
+})
+
+btnNum4.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "4";
+})
+
+btnNum5.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "5";
+})
+
+btnNum6.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "6";
+})
+
+btnNum7.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "7";
+})
+
+btnNum8.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "8";
+})
+
+btnNum9.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "9";
+})
+
+btnNum0.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = txtPuntos.value + "0";
+})
+
+btnBonus.addEventListener("click", (e) => {
+  e.preventDefault();
+  let obtenerBono1LocalStorage = JSON.parse(miStorage.getItem("datosUsuario"))
+  if (txtPuntos.value == "") {
+    txtPuntos.value = parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
+  } else if (txtPuntos.value != "") {
+    txtPuntos.value = parseInt(txtPuntos.value) + parseInt(obtenerBono1LocalStorage.bono ? obtenerBono1LocalStorage.bono : 30);
+  }
+})
+
+btnClear.addEventListener("click", (e) => {
+  e.preventDefault();
+  txtPuntos.value = "";
+})
+
+btnAddEquipo1.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (txtPuntos.value != "") {
+    puntajeEquipo1.push(txtPuntos.value);
+    miStorage.setItem("equipo1", puntajeEquipo1)
+    getPuntos();
+    mostrarPuntos();
+    txtPuntos.value = "";
+  }
+
+})
+
+btnAddEquipo2.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (txtPuntos.value != "") {
+    puntajeEquipo2.push(txtPuntos.value);
+    miStorage.setItem("equipo2", puntajeEquipo2)
+    getPuntos();
+    mostrarPuntos();
+    txtPuntos.value = "";
+  }
+})
+
+btnAddCV.addEventListener("click", (e) => {
+  e.preventDefault();
+  imageFile1.click();
+})
+
+imageFile1.addEventListener("change", async (e) => {
+  const result = await countCV(imageFile1);
+  if (result) {
+    txtPuntos.value = result.points;
+  }
+})
+
+
+
+
+
+
 
 cargarDatosUsuario ()
 getPuntos();
